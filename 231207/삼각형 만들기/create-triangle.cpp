@@ -15,7 +15,7 @@ int GetTri(int i1, int i2, int i3)
     int x3 = segments[i3][0];
     int y3 = segments[i3][1];
 
-    res = abs(x1*y2+x2*y3+x3*y1 - x2*y1-x3*y2-x1*y3);
+    res = abs((x1*y2+x2*y3+x3*y1) - (x2*y1+x3*y2+x1*y3));
     return res;
 }
 
