@@ -30,7 +30,7 @@ void Left_Shift(int r)
 { /* 12345 23451*/
 	int temp = arr[r][0];
 
-	for (int i = 1; i <= n - 1; i++)
+	for (int i = 1; i <= m - 1; i++)
 	{
 		arr[r][i - 1] = arr[r][i];
 	}
