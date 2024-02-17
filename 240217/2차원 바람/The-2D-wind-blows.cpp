@@ -4,7 +4,6 @@
 
 using namespace std;
 int base[ARR_MAX][ARR_MAX] = { 0,0 };
-int checked[ARR_MAX][ARR_MAX] = { 0, 0 };
 int changed[ARR_MAX][ARR_MAX] = { 0,0 };
 int dx[4] = { 0,1,0,-1 };
 int dy[4] = { 1,0,-1,0 };
