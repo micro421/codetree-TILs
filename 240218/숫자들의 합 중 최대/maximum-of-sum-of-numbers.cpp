@@ -45,6 +45,6 @@ int main()
 		max_res = max(max_res, res);
 	}
 
-	cout << res;
+	cout << max_res;
 	return 0;
 }
