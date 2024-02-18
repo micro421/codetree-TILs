@@ -32,7 +32,7 @@ int Notation(int num)
 }
 int main()
 {
-	int max_res;
+	int max_res = 0;
 	cin.tie(0);
 	ios::sync_with_stdio(0);
 
