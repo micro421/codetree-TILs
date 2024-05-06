@@ -44,26 +44,34 @@ int Consecutive_Func(int len)
     int consecutive_flag = 0;
     int consecutive_cnt=1;
     int start_idx;
-    for(int i=1; i<len; i++)
+
+    for(int i=1/*1*/; i<len/*len*/; i++)
     {
         if(grid[i-1] == grid[i])
         {
             consecutive_cnt++;
-            if(consecutive_cnt>=m)
-            {
-                consecutive_flag = 1;
-                start_idx = i-m+1;
-                length = Bumb(start_idx, grid[i], length);
-                break;
-            }
+
         }
         else
         {
             consecutive_cnt = 1;
         }
+        if(consecutive_cnt>=m)
+        {
+            consecutive_flag = 1;
+            start_idx = i-m+1;/*i-m+1*/
+            length = Bumb(start_idx, grid[i], length);
+            break;
+        }
     }
 
-    if(consecutive_flag == 0)
+    if(length == 1 && m==1) /* 길이가 1인데 m=1이어서 하나를 지워야 하는 상황*/
+    {
+        length=Bumb(0, grid[0], length);
+        consecutive_flag = 0;
+    }
+
+   if(consecutive_flag == 0)
     {
         return length;
     }
@@ -80,15 +88,16 @@ int main() {
     cin.tie(0);
     cin>>n>>m;
 
-    for(int i=0; i<n; i++)
+    for(int i=n-1; i>=0; i--)
     {
         cin>>grid[i];
     }
 
     int res = Consecutive_Func(n);
 
+
     cout<<res<<"\n";
-    for(int i=0; i<res; i++)
+    for(int i=res-1; i>=0; i--)
         cout<<grid[i]<<"\n";
     return 0;
 }
