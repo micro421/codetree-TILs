@@ -14,7 +14,7 @@ bool InRange(int nx, int ny)
 int AdapatableRangeNum(int i)
 {
     int range_num = 3;
-    for(int j=0; j<=50; j++)
+    for(int j=0; j<=5001; j++)
     {
         int k1 = (2*j+1);
         int k2 = (2*j+3);
