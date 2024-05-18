@@ -5,9 +5,9 @@ using namespace std;
 int n;
 int m;
 int t;
-int arr[20][20] ={0,0}; /*실수 노트 : 맨 처음 0,0 초기화 안함*/
-int count[20][20] ={0,0};
-int next_count[20][20] ={0,0};
+int arr[21][21] ={0,0}; /*실수 노트 : 맨 처음 0,0 초기화 안함*/
+int count[21][21] ={0,0};
+int next_count[21][21] ={0,0};
 
 /* arr과 count 구분*/
 bool InRange(int x, int y)
