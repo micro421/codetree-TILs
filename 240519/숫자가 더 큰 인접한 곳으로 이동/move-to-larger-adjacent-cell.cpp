@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <tuple>
 using namespace std;
 
 int grid[100][100] = {0,0};
