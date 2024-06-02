@@ -23,6 +23,9 @@ void FillBoard(int row, int col_s) /*i=k-1부터 i<=k+m-2까지 채우는 함수
     for(int i=col_s; i<col_s+m; i++) {
         grid[row][i]++;
     }
+
+    //cout<<"FillBoard Result Debugging"<<grid[0][0];
+
 }
 
 bool CheckFirstCol(int row, int col)
@@ -84,31 +87,29 @@ bool CheckMidCol(int row, int col)
 bool CheckBoardTouch(int row, int col_s)
 {
     bool flag_touch = false;
-    for(int i=col_s; i<col_s+m; i++)
-    {
-        if(i==col_s)
-        {
-            flag_touch = CheckFirstCol(row, i); /*상하좌*/
-            /*이러한 Check__Col 함수 내부에서 flag_touch를  True로 하던지 말던지 한다.*/
-            if(flag_touch)
-            {
-                break;
-            }
-        }
-        else if(i==col_s+m-1)
-        {
-            flag_touch = CheckLastCol(row, i);
-            if(flag_touch)
-            {
-                break;
-            }
-        }
-        else
-        {
-            flag_touch = CheckMidCol(row, i); /*아래만*/
-            if(flag_touch)
-            {
-                break; /*제어문 if말고 반복문을 빠져나가는 break*/
+
+    /*예외처리*/
+    if(n==1 && m==1 && k==1) {
+        flag_touch = true;
+    }
+    else {
+        for (int i = col_s; i < col_s + m; i++) {
+            if (i == col_s) {
+                flag_touch = CheckFirstCol(row, i); /*상하좌*/
+                /*이러한 Check__Col 함수 내부에서 flag_touch를  True로 하던지 말던지 한다.*/
+                if (flag_touch) {
+                    break;
+                }
+            } else if (i == col_s + m - 1) {
+                flag_touch = CheckLastCol(row, i);
+                if (flag_touch) {
+                    break;
+                }
+            } else {
+                flag_touch = CheckMidCol(row, i); /*아래만*/
+                if (flag_touch) {
+                    break; /*제어문 if말고 반복문을 빠져나가는 break*/
+                }
             }
         }
     }
@@ -140,8 +141,15 @@ int main() {
     curr_pos.second = k-1;
 
     while(!flag_result) {
-        FillBoard(curr_pos.first, curr_pos.second); /*i=k-1부터 m개의 열을 채우는 함수*/
-        flag_result = CheckBoardTouch(curr_pos.first, curr_pos.second);
+
+        //if (n == 1 && m == 1 && k==1) {
+        //    flag_result = true;
+        //}
+        //else
+        //{
+            FillBoard(curr_pos.first, curr_pos.second); /*i=k-1부터 m개의 열을 채우는 함수*/
+            flag_result = CheckBoardTouch(curr_pos.first, curr_pos.second);
+        //}
         //cout<<"flag_result is "<<flag_result<<"\n"; /*Here debugging and find mistake as int x = row; at Check___Col Function*/
         if(flag_result)
         {
@@ -172,6 +180,7 @@ int main() {
     return 0;
 }
 /*  설계 완료 시 논리 허점, 설계 오류, 프로세스 지킴 모두 확인 후 테스트 돌리기!*/
+/*예외 1 1 1 enter 0 이라는 입력 있어서 예외처리 적절하게 아키텍처 설계*/
 
 /*설계하면서 의문 - 기본개념처럼 pair<int, int> curr_pos 안 해도 괜찮지?
  * 아니 pair<int, int> curr_start_pos라도 쓰고 설계할까?
