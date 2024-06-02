@@ -165,6 +165,7 @@ int main() {
         /*그런데 이런 예외처리에 관한 내용 문제 참고 필요한듯*/
         if(curr_pos.first >= n)
         {
+            FillBoard(curr_pos.first - 1, curr_pos.second); /*test case #2 exceptions at 2nd trial for codetree */
             flag_result = true;
             break;
         }
