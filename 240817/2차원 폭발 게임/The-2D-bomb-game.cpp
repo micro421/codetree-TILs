@@ -183,6 +183,10 @@ void Count_Bumb ()
             }
         }
     }
+    if(m==1) /* exception */
+    {
+        cnt = 0;
+    }
 }
 
 void Erase_Blank_After_Rotate ()
