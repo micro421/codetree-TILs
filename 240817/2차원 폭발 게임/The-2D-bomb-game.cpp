@@ -235,21 +235,8 @@ int main() {
         Func_2d_Bumb ();
         Func_2d_Rotate ();
         Erase_Blank_After_Rotate (); /*next process에서 제대로 폭탄 터뜨리기 위해서*/
-
-        /*cout<<i<<"Try\n";
-
-        for(int i=0; i<n; i++)
-        {
-            for(int j=0; j<n; j++)
-            {
-                cout<<grid[i][j]<<" ";
-            }
-            cout<<"\n";
-        }
-        */
+        Func_2d_Bumb();/*회전 후에도 터질 폭탄이 있는 경우*/
     }
-
-
     Count_Bumb ();
     cout<<cnt;
 
