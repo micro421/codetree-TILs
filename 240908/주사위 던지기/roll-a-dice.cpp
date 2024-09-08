@@ -132,9 +132,9 @@ int main() {
                 Simul_Left();
                 grid[curr_x][curr_y] = dice[0][1];
             }
-            else{
+            /*else{
                 break;
-            }
+            }*/
         }
         if(dir=='R')
         {
@@ -145,9 +145,9 @@ int main() {
                 Simul_Right();
                 grid[curr_x][curr_y] = dice[0][1];
             }
-            else{
+            /*else{
                 break;
-            }
+            }*/
         }
         if(dir == 'U')
         {
@@ -158,22 +158,22 @@ int main() {
                 Simul_Up();
                 grid[curr_x][curr_y] = dice[0][1];
             }
-            else{
+            /*else{
                 break;
-            }
+            }*/
         }
         if(dir == 'D')
         {
             in_the_grid = InRange(curr_x+1, curr_y);
-            if(in_the_grid == true)
+            if(in_the_grid)
             {
                 curr_x = curr_x + 1;
                 Simul_Dn();
                 grid[curr_x][curr_y] = dice[0][1];
             }
-            else{
+            /*else{
                 break;
-            }
+            }*/
         }
 
     }
