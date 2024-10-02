@@ -98,6 +98,7 @@ int main() {
         }
     }
 
+    /*
     cout<<"t is "<<t<<" and grid is \n";
     for(int i=0; i<n; i++) {
         for (int j = 0; j < n; j++) {
@@ -105,6 +106,7 @@ int main() {
         }
         cout<<"\n";
     }
+    */
 
     while (dir_change_numb--) {
         int next_x = curr_x + dx[dir_mapper[t]];
@@ -117,7 +119,7 @@ int main() {
 
         Simulate(next_x, next_y);
 
-        cout<<"t is "<<t<<" and grid is \n";
+        /*cout<<"t is "<<t<<" and grid is \n";
         for(int i=0; i<n; i++) {
             for (int j = 0; j < n; j++) {
                 cout<<grid[i][j]<<" ";
@@ -125,15 +127,17 @@ int main() {
             cout<<"\n";
         }
         cout<<"\n\n";
+        */
 
-        cout<<"t is "<<t<<" and exist is \n";
+        /*cout<<"t is "<<t<<" and exist is \n";
         for(int i=0; i<n; i++) {
             for (int j = 0; j < n; j++) {
                 cout<<exist[i][j]<<" ";
             }
             cout<<"\n";
         }
-        cout<<"\n\n";
+        */
+        //cout<<"\n\n";
         for(int i=0; i<n; i++)
         {
             for(int j=0; j<n; j++)
