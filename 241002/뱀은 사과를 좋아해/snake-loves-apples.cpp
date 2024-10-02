@@ -1,11 +1,11 @@
 #include <iostream>
 #define APPLE 5
-#define ASCII_NUM
+#define ASCII_NUM 128
 using namespace std;
 
 int n,m,k;
 
-char d[ASCII_NUM]; /* direction */
+char d[ASCII_NUM]; /* 문자를 받으니 char 배열 ! 주의 ! direction */
 int dir_mapper[1000];
 int p[1000]; /* 움직이는 길이 길이 */
 int grid[100][100] ={0,0};
