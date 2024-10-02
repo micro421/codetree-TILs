@@ -48,16 +48,16 @@ void Simulate(int next_x, int next_y)
         grid[next_x][next_y] = 1;
         exist[next_x][next_y] += 1;
         /* 길이가 1인 경우 del_x, del_y에 next_x, next_y 대입 불필요*/
-        if(length>1)/* delete 역할 */
-        {
+        //if(length>1)/* delete 역할 */
+        //{
             grid[del_x[del_idx]][del_y[del_idx]] = 0;
             exist[del_x[del_idx]][del_y[del_idx]] = 0;
             del_idx++; /* 위치 조정 */
-            length--;
+            // length--; /* 길이가 줄어드는 것은 잘못된 구현! */
             del_x[accumul_idx] = next_x;
             del_y[accumul_idx] = next_y;
             accumul_idx++;
-        }
+        //}
     }
 }
 
@@ -98,15 +98,13 @@ int main() {
         }
     }
 
-    /*
-    cout<<"t is "<<t<<" and grid is \n";
+   /* cout<<"t is "<<t<<" and grid is \n";
     for(int i=0; i<n; i++) {
         for (int j = 0; j < n; j++) {
             cout<<grid[i][j]<<" ";
         }
         cout<<"\n";
-    }
-    */
+    }*/
 
     while (dir_change_numb--) {
         int next_x = curr_x + dx[dir_mapper[t]];
@@ -118,18 +116,16 @@ int main() {
         }
 
         Simulate(next_x, next_y);
-
-        /*cout<<"t is "<<t<<" and grid is \n";
+/*
+        cout<<"t is "<<t<<" and grid is \n";
         for(int i=0; i<n; i++) {
             for (int j = 0; j < n; j++) {
                 cout<<grid[i][j]<<" ";
             }
             cout<<"\n";
         }
-        cout<<"\n\n";
-        */
 
-        /*cout<<"t is "<<t<<" and exist is \n";
+        cout<<"t is "<<t<<" and exist is \n";
         for(int i=0; i<n; i++) {
             for (int j = 0; j < n; j++) {
                 cout<<exist[i][j]<<" ";
@@ -137,7 +133,7 @@ int main() {
             cout<<"\n";
         }
         */
-        //cout<<"\n\n";
+
         for(int i=0; i<n; i++)
         {
             for(int j=0; j<n; j++)
