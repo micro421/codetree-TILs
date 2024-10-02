@@ -1,10 +1,11 @@
 #include <iostream>
 #define APPLE 5
+#define ASCII_NUM
 using namespace std;
 
 int n,m,k;
 
-char d[1000]; /* direction */
+char d[ASCII_NUM]; /* direction */
 int dir_mapper[1000];
 int p[1000]; /* 움직이는 길이 길이 */
 int grid[100][100] ={0,0};
@@ -14,8 +15,8 @@ int map_idx;
 int accumul_idx;
 int del_idx;
 int length = 1;
-int del_x[1000];
-int del_y[1000];
+int del_x[1000] = {0,0};
+int del_y[1000] = {0,0};
 int dir_change_numb = 0;
 int dx[4]={0,1,0 ,-1};
 int dy[4] = {1,0,-1,0};
