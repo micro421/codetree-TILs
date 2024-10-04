@@ -1,11 +1,10 @@
 #include <iostream>
 #define APPLE 5
-#define ASCII_NUM 128
 using namespace std;
 
 int n,m,k;
 
-char d[ASCII_NUM]; /* 문자를 받으니 char 배열 ! 주의 ! direction */
+char d[1000]; /* 문제 조건 잘 분석 바람 */
 int dir_mapper[10000]; /* 입력으로 주어지는 전체 p의 합 (S) <= 10000 */
 int p[10000]; /* 최소 1씩 10000번 : 10000개의 인덱스 정도는 필요 */
 int grid[100][100] ={0,0};
