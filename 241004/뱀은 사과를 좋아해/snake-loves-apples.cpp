@@ -6,8 +6,8 @@ using namespace std;
 int n,m,k;
 
 char d[ASCII_NUM]; /* 문자를 받으니 char 배열 ! 주의 ! direction */
-int dir_mapper[10000];
-int p[1000]; /* 움직이는 길이 길이 */
+int dir_mapper[10000]; /* 입력으로 주어지는 전체 p의 합 (S) <= 10000 */
+int p[10000]; /* 최소 1씩 10000번 : 10000개의 인덱스 정도는 필요 */
 int grid[100][100] ={0,0};
 int exist[100][100] ={0,0};
 int t, curr_x, curr_y;
@@ -48,17 +48,13 @@ void Simulate(int next_x, int next_y)
     {
         grid[next_x][next_y] = 1;
         exist[next_x][next_y] += 1;
-        /* 길이가 1인 경우 del_x, del_y에 next_x, next_y 대입 불필요*/
-        //if(length>1)/* delete 역할 */
-        //{
+
             grid[del_x[del_idx]][del_y[del_idx]] = 0;
             exist[del_x[del_idx]][del_y[del_idx]] = 0;
-            del_idx++; /* 위치 조정 */
-            // length--; /* 길이가 줄어드는 것은 잘못된 구현! */
+            del_idx++;
             del_x[accumul_idx] = next_x;
             del_y[accumul_idx] = next_y;
             accumul_idx++;
-        //}
     }
 }
 
@@ -99,14 +95,6 @@ int main() {
         }
     }
 
-   /* cout<<"t is "<<t<<" and grid is \n";
-    for(int i=0; i<n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout<<grid[i][j]<<" ";
-        }
-        cout<<"\n";
-    }*/
-
     while (dir_change_numb--) {
         int next_x = curr_x + dx[dir_mapper[t]];
         int next_y = curr_y + dy[dir_mapper[t]];
@@ -117,23 +105,6 @@ int main() {
         }
 
         Simulate(next_x, next_y);
-/*
-        cout<<"t is "<<t<<" and grid is \n";
-        for(int i=0; i<n; i++) {
-            for (int j = 0; j < n; j++) {
-                cout<<grid[i][j]<<" ";
-            }
-            cout<<"\n";
-        }
-
-        cout<<"t is "<<t<<" and exist is \n";
-        for(int i=0; i<n; i++) {
-            for (int j = 0; j < n; j++) {
-                cout<<exist[i][j]<<" ";
-            }
-            cout<<"\n";
-        }
-        */
 
         for(int i=0; i<n; i++)
         {
