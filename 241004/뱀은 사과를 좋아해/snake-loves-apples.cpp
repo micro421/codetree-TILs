@@ -15,8 +15,8 @@ int map_idx;
 int accumul_idx;
 int del_idx;
 int length = 1;
-int del_x[1000] = {0,0};
-int del_y[1000] = {0,0};
+int del_x[10000] = {0,0}; /* 최악의 경우 1 * 10000번 */
+int del_y[10000] = {0,0};
 int dir_change_numb = 0;
 int dx[4]={0,1,0 ,-1};
 int dy[4] = {1,0,-1,0};
