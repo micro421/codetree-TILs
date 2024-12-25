@@ -11,7 +11,7 @@ int dy[8] = {-1,0,1,-1,1,-1,0,1};
 
 pair<int,int> LookForMaxPos(int x, int y)
 {
-    pair<int, int> max_pos = make_pair(x+dx[0], y+dy[0]);
+    pair<int, int> max_pos;
     max_num = 0;
     for(int i=0; i<8; i++)
     {
