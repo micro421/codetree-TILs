@@ -3,7 +3,6 @@
 using namespace std;
 
 int grid[MAX_N][MAX_N] = {0,0};
-int next_grid[MAX_N][MAX_N] = {0,0};
 int n,m;
 int turn_num;
 int max_num;
@@ -16,10 +15,13 @@ pair<int,int> LookForMaxPos(int x, int y)
     max_num = grid[x+dx[0]][y+dy[0]];
     for(int i=0; i<8; i++)
     {
-        if(max_num <grid[x+dx[i]][y+dy[i]])
+        if((( x+dx[i]) >= 0) && ((y+dy[i]) >=0 ))
         {
-            max_num = grid[x+dx[i]][y+dy[i]];
-            max_pos = make_pair(x+dx[i], y+dy[i]);
+            if(max_num <grid[x+dx[i]][y+dy[i]])
+            {
+                max_num = grid[x+dx[i]][y+dy[i]];
+                max_pos = make_pair(x+dx[i], y+dy[i]);
+            }
         }
     }
 
@@ -39,8 +41,9 @@ void One_Turn_Process()
                 turn_x = i;
                 turn_y = j;
                 max_pos = LookForMaxPos(turn_x,turn_y);
-                break; /* turn_num 찾으면, 찾는 process 종료하고, 숫자 swap 해준다,
- * 그렇지 않으면 turn_num이 한 번  더 찾아질 수 있다.*/
+                break;
+                /* turn_num 찾으면, 찾는 process 종료하고, 숫자 swap 해준다,
+                * 그렇지 않으면 turn_num이 한 번  더 찾아질 수 있다.*/
             }
         }
     }
@@ -72,7 +75,8 @@ for(int i=0; i<m; i++) {
         }
         if(i!=n-1)
         {
-            cout<<"\n";}
+            cout<<"\n";
+        }
     }
     return 0;
 }
