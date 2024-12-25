@@ -10,20 +10,26 @@ int next_count[MAX_N][MAX_N]={0,0};
 int dx[4]={-1,1,0,0};
 int dy[4]={0,0,-1,1};
 
+bool InGrid(int x, int y)
+{
+    return (0<=x && x<n && 0<=y && y<n);
+}
 pair<int,int> GetNextPos(int x, int y)
 {
     pair<int, int> next_pos;
-    next_pos = make_pair(x, y);
-    int near_max = grid[x][y];
+    next_pos = make_pair(x+dx[0], y+dy[0]);
+    int near_max = grid[x+dx[0]][y+dy[0]];
     for(int dir_num=0; dir_num<4; dir_num++)
     {
-        if(near_max < grid[x+dx[dir_num]][y+dy[dir_num]])
-        {
-            near_max = grid[x+dx[dir_num]][y+dy[dir_num]];
-            int next_pos_x = x+dx[dir_num];
-            int next_pos_y = y+dy[dir_num];
-            next_pos = make_pair(next_pos_x, next_pos_y);
-        }
+        int next_pos_x = x+dx[dir_num];
+        int next_pos_y = y+dy[dir_num];
+
+            if (near_max < grid[next_pos_x][next_pos_y]) {
+                near_max = grid[next_pos_x][next_pos_y];
+
+                next_pos = make_pair(next_pos_x, next_pos_y);
+            }
+
     }
     return next_pos;
 }
@@ -33,8 +39,7 @@ void Move(int x, int y)
     pair<int, int> next_pos = GetNextPos(x, y);
     int next_pos_x = next_pos.first;
     int next_pos_y = next_pos.second;
-
-        next_count[next_pos_x][next_pos_y]++;
+    next_count[next_pos_x][next_pos_y]++;
 }
 void MoveAll()
 {
