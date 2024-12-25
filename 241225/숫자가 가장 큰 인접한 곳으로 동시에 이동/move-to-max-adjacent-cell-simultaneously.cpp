@@ -1,11 +1,12 @@
 #include <iostream>
 
+#define MAX_N 20
 using namespace std;
 int n, m, t;
 int res;
-int grid[100][100] ={0,0};
-int count[100][100]={0,0};
-int next_count[100][100]={0,0};
+int grid[MAX_N][MAX_N] ={0,0};
+int count[MAX_N][MAX_N]={0,0};
+int next_count[MAX_N][MAX_N]={0,0};
 int dx[4]={-1,1,0,0};
 int dy[4]={0,0,-1,1};
 
