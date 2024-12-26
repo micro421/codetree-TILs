@@ -18,7 +18,7 @@ pair<int,int> GetNextPos(int x, int y)
 {
     pair<int, int> next_pos;
     int near_max;
-    for(int i=0; i<8; i++)
+    for(int i=0; i<4; i++)
     {
         int next_x = x+dx[i];
         int next_y = y+dy[i];
@@ -30,15 +30,15 @@ pair<int,int> GetNextPos(int x, int y)
         }
     }
 
-    for(int dir_num=0; dir_num<4; dir_num++)
+    for(int i=0; i<4; i++)
     {
-        int next_pos_x = x+dx[dir_num];
-        int next_pos_y = y+dy[dir_num];
+        int next_x = x+dx[i];
+        int next_y = y+dy[i];
+        if(InGrid(next_x, next_y))
+            if (near_max < grid[next_x][next_y]) {
+                near_max = grid[next_x][next_y];
 
-            if (near_max < grid[next_pos_x][next_pos_y]) {
-                near_max = grid[next_pos_x][next_pos_y];
-
-                next_pos = make_pair(next_pos_x, next_pos_y);
+                next_pos = make_pair(next_x, next_y);
             }
 
     }
