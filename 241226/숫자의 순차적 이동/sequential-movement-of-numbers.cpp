@@ -9,13 +9,17 @@ int max_num;
 int dx[8] = {-1,-1,-1,0,0,1,1,1};
 int dy[8] = {-1,0,1,-1,1,-1,0,1};
 
+bool InGrid(int x, int y)
+{
+    return (0<=x && x<n && 0<=y && y<n);
+}
 pair<int,int> LookForMaxPos(int x, int y)
 {
     pair<int, int> max_pos;
     max_num = 0;
     for(int i=0; i<8; i++)
     {
-        if((( x+dx[i]) >= 0) && ((y+dy[i]) >=0 ))
+        if(InGrid(x+dx[i], y+dy[i]))
         {
             if(max_num <grid[x+dx[i]][y+dy[i]])
             {
@@ -24,7 +28,6 @@ pair<int,int> LookForMaxPos(int x, int y)
             }
         }
     }
-
     return max_pos;
 }
 
