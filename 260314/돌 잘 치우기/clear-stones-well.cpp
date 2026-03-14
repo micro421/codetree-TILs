@@ -9,8 +9,7 @@ int n, k, m;
 int grid[100][100];
 int temp_grid[100][100];
 int r[10000], c[10000];
-int grid_cnt = 0;
-vector<int> grid_vec;
+vector<int> vec_visited;
 bool visited[100][100];
 
 vector<pair<int, int>> org_stones;
@@ -27,20 +26,28 @@ bool CanGo(int x, int y)
 void Bfs_Starts_Set() {
     for (int i = 0; i < k; i++) {
         bfs_q.push(org_bfs_starts[i]);
+        int x = org_bfs_starts[i].first;
+        int y = org_bfs_starts[i].second; /*인덱스 실수 주의!*/
+        /* 큐에 넣었다 : 방문했다! */
+        visited[x][y] = true; /* 큐에 push 했으니 visited 처리 */
+        /* grid_cnt 값도 시작점 갯수만큼k로 */
     }
 }
 
+
 void BFS_K()
 {
-    Bfs_Starts_Set ();
     memset(visited, false, sizeof(visited)); /* visited[100][100] 배열 0으로 초기화 방법 memset ?*/
+    Bfs_Starts_Set (); /* visited를 함으로써 memeset vistied 다음으로 하세요! */
     /* starts */
-    grid_cnt = 0; /* 누우적이니 초기화 조심 */
+    /* 다음 두 줄 위치까지 고려 해야함! 첫 시작점 visited true 표시 및 grid_cnt에 counting */
+    int grid_cnt = k;
+
     while(!bfs_q.empty())
     {
         pair<int, int> curr_pos = bfs_q.front();
         int x = curr_pos.first;
-        int y=curr_pos.second;
+        int y= curr_pos.second;
         bfs_q.pop();
 
         int dx[4]={-1,0,1,0};
@@ -60,24 +67,16 @@ void BFS_K()
             }
         }
     }
-    grid_vec.push_back(grid_cnt);
+    vec_visited.push_back(grid_cnt);
 }
 
 void Remove_Stones()
 {
     fill(&visited[0][0], &visited[0][0] + 100*100, false);
-    memcpy(temp_grid, grid, sizeof(grid));
-    /*
-    temp_stones.clear();
-    temp_stones = org_stones; // remove_stone_numb나 stones 같은 배열들 언제 Init 해야하는지
-    */
+    memcpy(temp_grid, grid, sizeof(grid)); /* 변수 관리 */
 
     for(int i=0; i<remove_stone_numb.size(); i++)
     {
-     /*
-      * int del_stone_x = temp_stones[i].first;
-        int del_stone_y = temp_stones[i].second; */
-
         int del_num_i = remove_stone_numb[i];
         int del_x = org_stones[del_num_i].first;
         int del_y = org_stones[del_num_i].second;
@@ -95,7 +94,7 @@ void Choose(int curr_num, int cnt)
         return;
     }
 
-    if(curr_num == n)
+    if(curr_num == org_stones.size()) /* 돌의 개수를 써야함, 처음에 curr_num == n이라 썼는데 curr_num < 돌사이즈 일 수도 있으니 안 됨 */
     {
         return;
     }
@@ -104,7 +103,7 @@ void Choose(int curr_num, int cnt)
 
     /* cnt번째 돌 선택 */
     if(cnt < org_stones.size()) { /* 예외처리 안하면 org_Stones[2]에 접근해서 segmentation fault 남 */
-        remove_stone_numb.push_back(cnt);
+        remove_stone_numb.push_back(curr_num); /* 현재 보고있는 돌의 인덱스를 넣어야 함 : 0부터 org_stones.size() -1까지 중에 m개야!*/
         Choose(curr_num+1, cnt+1);
         remove_stone_numb.pop_back();
     }
@@ -132,8 +131,8 @@ int main() {
     }
 
     Choose(0, 0);
-    sort(grid_vec.begin(), grid_vec.end());
-    cout<<grid_vec[0]<<"\n";
+    sort(vec_visited.begin(), vec_visited.end(), greater<int>());
+    cout<< vec_visited[0]<<"\n";
 
     return 0;
 }
