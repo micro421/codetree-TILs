@@ -54,7 +54,13 @@ int main() {
     Push(0,0,0);
     BFS();
 
-    cout<<step[n-1][m-1];
-
+    if(step[n-1][m-1]>=1)
+    {
+        cout<<step[n-1][m-1];
+    }
+    else
+    {
+        cout<<-1;
+    }
     return 0;
 }
